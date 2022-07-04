@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
-import lclStorage from './shared/services/localStorage/storage';
+import {load, save } from './shared/services/localStorage/storage';
 
 import Section from 'components/Section';
 import ContactForm from 'components/ContactForm';
@@ -19,7 +19,7 @@ class App extends Component {
   };
 
   componentDidMount() {
-    const contacts = lclStorage.load('contactsList');
+    const contacts = load('contactsList');
     
         if(contacts?.length) {
             this.setState({
@@ -31,7 +31,7 @@ class App extends Component {
 
   componentDidUpdate() {
     const { contacts } = this.state;
-    lclStorage.save('contactsList', contacts);
+    save('contactsList', contacts);
   }
 
 
