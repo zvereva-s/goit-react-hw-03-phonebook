@@ -18,6 +18,7 @@ class App extends Component {
     filter: '',
   };
 
+
   componentDidMount() {
     const contacts = load('contactsList');
     
@@ -65,9 +66,10 @@ class App extends Component {
     if (!filter) {
       return contacts
     }
-    return contacts.filter(({name}) =>
+    const updContacts = contacts.filter(({name}) =>
       name.toLowerCase().includes(filter.toLowerCase())
     );
+    return updContacts;
   }
   removeContact = id=> {
     this.setState(prevState => ({
