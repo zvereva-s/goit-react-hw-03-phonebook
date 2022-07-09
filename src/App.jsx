@@ -30,9 +30,11 @@ class App extends Component {
 
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps, prevState) {
+    if(prevState.contacts  !== this.state.contacts){
     const { contacts } = this.state;
     save('contactsList', contacts);
+    }
   }
 
 
